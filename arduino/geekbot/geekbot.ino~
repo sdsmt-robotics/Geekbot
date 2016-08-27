@@ -60,20 +60,16 @@ void loop()
         break;
 
       case FLAG_OUT_LIGHTS:
-        if (data > 1)
+        if (data == 1)
         {
-          digitalWrite(LED_LEFT_PIN, HIGH);
-          digitalWrite(LED_RIGHT_PIN, HIGH);
-        }
-        else
-        {
-          digitalWrite(LED_LEFT_PIN, LOW);
-          digitalWrite(LED_RIGHT_PIN, LOW);
+          light = !light;
+          digitalWrite(LED_LEFT_PIN, light);
+          digitalWrite(LED_RIGHT_PIN, light);
         }
         break;
 
       case FLAG_OUT_BUZZER:
-        if (data > 1)
+        if (data == 1)
           digitalWrite(BUZZER_PIN, HIGH);
         else
           digitalWrite(BUZZER_PIN, LOW);
