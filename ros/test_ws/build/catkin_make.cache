@@ -1,0 +1,2 @@
+geekbot_pkg
+-DCATKIN_DEVEL_PREFIX=/home/odroid/repositories/Geekbot/ros/test_ws/devel -DCMAKE_INSTALL_PREFIX=/home/odroid/repositories/Geekbot/ros/test_ws/install -G Unix Makefiles

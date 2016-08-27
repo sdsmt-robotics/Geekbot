@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/odroid/repositories/Geekbot/ros/test_ws/devel/setup.sh
