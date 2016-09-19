@@ -40,9 +40,9 @@ def joy_update(data):
 def publisher():
     print("publisher()")
     global lights_pub, buzzer_pub, cmd_vel_pub, rate
-    lights_pub  = rospy.Publisher("/geekbot/lights", Bool, queue_size=10)
-    buzzer_pub  = rospy.Publisher("/geekbot/buzzer", Bool, queue_size=10)
-    cmd_vel_pub = rospy.Publisher("/geekbot/cmd_vel", Twist, queue_size=10)
+    lights_pub  = rospy.Publisher("lights", Bool, queue_size=10)
+    buzzer_pub  = rospy.Publisher("buzzer", Bool, queue_size=10)
+    cmd_vel_pub = rospy.Publisher("cmd_vel", Twist, queue_size=10)
     print("Publishers assigned, trying to subscribe")
     rospy.init_node('geekbot_teleop', anonymous=False)
     rospy.Subscriber("joy", Joy, joy_update)

@@ -117,6 +117,8 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/odroid/repositories/Geekbot/ros/test_ws/build/gtest/cmake_install.cmake")
+  include("/home/odroid/repositories/Geekbot/ros/test_ws/build/bringup_pkg/cmake_install.cmake")
+  include("/home/odroid/repositories/Geekbot/ros/test_ws/build/geekbot_pkg/cmake_install.cmake")
 
 endif()
 

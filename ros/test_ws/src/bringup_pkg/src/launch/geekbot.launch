@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+	<group ns="geekbot">	
+		
+		<node pkg="geekbot_pkg" type="geekbot_link.py" name="geekbot_arduino_controller_node"/>
+		
+		<node pkg="geekbot_pkg" type="geekbot_teleop.py" name="geekbot_joy_to_twist"/>
+
+		<node pkg="joy" type="joy_node" name="joystick_node">
+		</node>
+	</group>
+</launch>

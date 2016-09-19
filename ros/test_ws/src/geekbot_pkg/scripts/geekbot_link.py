@@ -63,10 +63,10 @@ def buzzer_callback(thing):
         print("Buzzer callback: off")
 
 def listener():
-    rospy.init_node('geekbot', anonymous=False)
-    rospy.Subscriber("geekbot/lights", Bool, lights_callback)
-    rospy.Subscriber("geekbot/cmd_vel", Twist, cmd_vel_callback)
-    rospy.Subscriber("geekbot/buzzer", Bool, buzzer_callback)
+    rospy.init_node('geekbot_link', anonymous=False)
+    rospy.Subscriber("lights", Bool, lights_callback)
+    rospy.Subscriber("cmd_vel", Twist, cmd_vel_callback)
+    rospy.Subscriber("buzzer", Bool, buzzer_callback)
     rospy.spin()
 
 if __name__ == '__main__':

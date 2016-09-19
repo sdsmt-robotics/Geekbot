@@ -1,0 +1,8 @@
+prefix=/home/odroid/repositories/Geekbot/ros/test_ws/install
+
+Name: bringup_pkg
+Description: Description of bringup_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/odroid/repositories/Geekbot/ros/test_ws/install/lib 
+Requires: 
