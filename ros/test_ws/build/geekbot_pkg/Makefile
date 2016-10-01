@@ -406,6 +406,21 @@ rosgraph_msgs_generate_messages_nodejs/fast:
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule
+.PHONY : geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule
+
+# Convenience name for target.
+geekbot_pkg_node: geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule
+
+.PHONY : geekbot_pkg_node
+
+# fast build rule for target.
+geekbot_pkg_node/fast:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build
+.PHONY : geekbot_pkg_node/fast
+
+# Convenience name for target.
 geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 .PHONY : geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
@@ -615,6 +630,33 @@ diagnostic_msgs_generate_messages_eus/fast:
 	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make geekbot_pkg/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
 .PHONY : diagnostic_msgs_generate_messages_eus/fast
 
+src/geekbot_link.o: src/geekbot_link.cpp.o
+
+.PHONY : src/geekbot_link.o
+
+# target to build an object file
+src/geekbot_link.cpp.o:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/src/geekbot_link.cpp.o
+.PHONY : src/geekbot_link.cpp.o
+
+src/geekbot_link.i: src/geekbot_link.cpp.i
+
+.PHONY : src/geekbot_link.i
+
+# target to preprocess a source file
+src/geekbot_link.cpp.i:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/src/geekbot_link.cpp.i
+.PHONY : src/geekbot_link.cpp.i
+
+src/geekbot_link.s: src/geekbot_link.cpp.s
+
+.PHONY : src/geekbot_link.s
+
+# target to generate assembly for a file
+src/geekbot_link.cpp.s:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/src/geekbot_link.cpp.s
+.PHONY : src/geekbot_link.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -644,6 +686,7 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... geekbot_pkg_node"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
@@ -658,6 +701,9 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... diagnostic_msgs_generate_messages_cpp"
 	@echo "... diagnostic_msgs_generate_messages_eus"
+	@echo "... src/geekbot_link.o"
+	@echo "... src/geekbot_link.i"
+	@echo "... src/geekbot_link.s"
 .PHONY : help
 
 

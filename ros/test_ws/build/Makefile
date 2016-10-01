@@ -478,6 +478,19 @@ rosgraph_msgs_generate_messages_nodejs/fast:
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named geekbot_pkg_node
+
+# Build rule for target.
+geekbot_pkg_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg_node
+.PHONY : geekbot_pkg_node
+
+# fast build rule for target.
+geekbot_pkg_node/fast:
+	$(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build
+.PHONY : geekbot_pkg_node/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -696,6 +709,7 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... geekbot_pkg_node"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"

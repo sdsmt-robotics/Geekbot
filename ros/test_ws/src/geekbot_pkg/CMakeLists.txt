@@ -130,16 +130,18 @@ include_directories(
 # add_dependencies(geekbot_pkg ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(geekbot_pkg_node src/geekbot_pkg_node.cpp)
+ add_executable(geekbot_pkg_node src/geekbot_link.cpp)
+
+ add_definitions(-std=c++11)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(geekbot_pkg_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(geekbot_pkg_node
-#   ${catkin_LIBRARIES}
-# )
+ target_link_libraries(geekbot_pkg_node
+   ${catkin_LIBRARIES}
+ )
 
 #############
 ## Install ##

@@ -194,6 +194,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "geekbot_pkg/CMakeFiles/std_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "geekbot_pkg/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "geekbot_pkg/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
+  "geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/DependInfo.cmake"
   "geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/DependInfo.cmake"
   "geekbot_pkg/CMakeFiles/std_msgs_generate_messages_eus.dir/DependInfo.cmake"
   "geekbot_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/DependInfo.cmake"
