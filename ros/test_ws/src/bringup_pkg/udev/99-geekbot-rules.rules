@@ -1,0 +1,6 @@
+# SDSMT-added odroid 3 wifi adapter (Ralink RT5572) and edimax EW-7811Un rule to bypass Xenial's stupid network interface naming scheme
+SUBSYSTEM=="net", ACTION=="add",ATTRS{idVendor}=="148f", ATTRS{idProduct}=="5572", NAME="wlan-odroid3"
+SUBSYSTEM=="net", ACTION=="add",ATTRS{idVendor}=="7392", ATTRS{idProduct}=="7811", NAME="wlan-edimax"
+
+# Mounts the RobotGeek Devuiliniainivianvaoaeero Arduino clone to /dev/geekbot/arduino
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", SYMLINK+="geekbot/arduino", MODE=="0666"

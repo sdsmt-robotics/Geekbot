@@ -6,7 +6,7 @@
 		
 		<node pkg="geekbot_pkg" type="geekbot_teleop.py" name="geekbot_joy_to_twist"/>
 
-		<node pkg="joy" type="joy_node" name="joystick_node">
+		<node pkg="joy" type="joy_node" name="joystick_node">	
 		</node>
 	</group>
 </launch>

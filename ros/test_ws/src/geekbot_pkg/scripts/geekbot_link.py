@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 import rospy
 import serial
+import threading
+import time
 from struct import pack
 from collections import namedtuple
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Bool, Int16
 
-ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
+ser = serial.Serial('/dev/geekbot/arduino', 115200)
+ser.timeout = None
+time.sleep(.5)
 print("Serial port opened.")
+pub = rospy.Publisher('ir_mm', Int16, queue_size=5)
 
 def map_short(num):
     temp = num * 32767
@@ -62,13 +67,28 @@ def buzzer_callback(thing):
         send_cmd(0x29, 0)
         print("Buzzer callback: off")
 
-def listener():
+def ir_update(yes):
+    if yes:
+        send_cmd(0x27,1)
+        mm = ser.read()*256
+        #print(mm)
+	mm = ser.read()+mm
+	print(mm)
+        pub.publish(mm) 
+    else:
+        yes = not yes
+    return yes 
+ir_update.counter = 0
+
+if __name__ == '__main__':
     rospy.init_node('geekbot_link', anonymous=False)
+    r = rospy.Rate(60)
     rospy.Subscriber("lights", Bool, lights_callback)
     rospy.Subscriber("cmd_vel", Twist, cmd_vel_callback)
     rospy.Subscriber("buzzer", Bool, buzzer_callback)
-    rospy.spin()
+    update = False
+    while not rospy.is_shutdown():
+        r.sleep()
+	update = ir_update(update)
 
-if __name__ == '__main__':
-    listener()
     
