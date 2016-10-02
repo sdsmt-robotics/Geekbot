@@ -166,6 +166,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/rule:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/rule
+.PHONY : geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/rule
+
+# Convenience name for target.
+geekbot_link_cpp: geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/rule
+
+.PHONY : geekbot_link_cpp
+
+# fast build rule for target.
+geekbot_link_cpp/fast:
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/build.make geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/build
+.PHONY : geekbot_link_cpp/fast
+
+# Convenience name for target.
 geekbot_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
 	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 .PHONY : geekbot_pkg/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
@@ -406,21 +421,6 @@ rosgraph_msgs_generate_messages_nodejs/fast:
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule:
-	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule
-.PHONY : geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule
-
-# Convenience name for target.
-geekbot_pkg_node: geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/rule
-
-.PHONY : geekbot_pkg_node
-
-# fast build rule for target.
-geekbot_pkg_node/fast:
-	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build
-.PHONY : geekbot_pkg_node/fast
-
-# Convenience name for target.
 geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f CMakeFiles/Makefile2 geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 .PHONY : geekbot_pkg/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
@@ -636,7 +636,7 @@ src/geekbot_link.o: src/geekbot_link.cpp.o
 
 # target to build an object file
 src/geekbot_link.cpp.o:
-	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/src/geekbot_link.cpp.o
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/build.make geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/src/geekbot_link.cpp.o
 .PHONY : src/geekbot_link.cpp.o
 
 src/geekbot_link.i: src/geekbot_link.cpp.i
@@ -645,7 +645,7 @@ src/geekbot_link.i: src/geekbot_link.cpp.i
 
 # target to preprocess a source file
 src/geekbot_link.cpp.i:
-	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/src/geekbot_link.cpp.i
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/build.make geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/src/geekbot_link.cpp.i
 .PHONY : src/geekbot_link.cpp.i
 
 src/geekbot_link.s: src/geekbot_link.cpp.s
@@ -654,7 +654,7 @@ src/geekbot_link.s: src/geekbot_link.cpp.s
 
 # target to generate assembly for a file
 src/geekbot_link.cpp.s:
-	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/build.make geekbot_pkg/CMakeFiles/geekbot_pkg_node.dir/src/geekbot_link.cpp.s
+	cd /home/odroid/repositories/Geekbot/ros/test_ws/build && $(MAKE) -f geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/build.make geekbot_pkg/CMakeFiles/geekbot_link_cpp.dir/src/geekbot_link.cpp.s
 .PHONY : src/geekbot_link.cpp.s
 
 # Help Target
@@ -668,6 +668,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... geekbot_link_cpp"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_cpp"
@@ -686,7 +687,6 @@ help:
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... geekbot_pkg_node"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"

@@ -11,7 +11,7 @@
 #include <std_msgs/Int16.h>
 #include <std_msgs/Bool.h>
 
-#define BAUDRATE 115200
+#define BAUDRATE 57600
 #define TIMEOUT 50
 #define READ_DELAY 10
 #define IR_POLL 100
@@ -46,16 +46,13 @@ short map_short(float num)
 
 bool send_cmd(unsigned char flag, short data)
 {
-    unsigned char send_bytes[8] = {0};
-    send_bytes[0] = flag;
-    send_bytes[1] = data | 0xFF00;
-    send_bytes[2] = data | 0x00FF;
-    send_bytes[3] = 0;
-    int n = write(arduino, send_bytes, 3);
-    if(n >= 3)
-        return 0;
-    else
-        return 1;
+	unsigned char flag_temp = flag;
+	short data_temp = data;
+	int n  = write(arduino, &flag_temp, 1);
+	n += write(arduino, &data_temp, sizeof(data_temp));
+	if(n > 1 + sizeof(data));
+		return 0;
+	return 1;
 }
 
 bool set_left(short data){
@@ -89,9 +86,16 @@ bool buzzer_callback(std_msgs::Bool thing){
 }
 
 bool ir_update(){
-    send_cmd(0x27,1);
-    unsigned char high_byte;
-    unsigned char low_byte;
+    //if(send_cmd(0x27, 1))
+//	cout << "IR update error!" <<endl;
+    /*unsigned char temp = 0x27;
+    write(arduino, &temp, 1);
+    write(arduino, &temp, 1);
+    write(arduino, &temp, 1);*/
+    if(send_cmd(0x27, 1))
+        cout << "IR update send error." << endl;
+    unsigned char high_byte = 0;
+    unsigned char low_byte = 0;
     usleep(READ_DELAY*1000);
     read(arduino, &high_byte, 1);
     read(arduino, &low_byte, 1);
@@ -139,15 +143,27 @@ int main(int argc, char **argv)
 {
 	arduino = serial_port_init("/dev/geekbot/arduino", BAUDRATE);
 	//main_thread = std::this_thread::get_id();
-	std::thread ir_thread (ir_func, main_thread);
+
 	if(arduino < 1)
 	{
 		cout << "Can't open port, exiting...." << endl;
 		main_thread_dead = 1;
 		return 1;
 	}
-
-	sleep(5);
+	//clear_port(arduino);
+	unsigned char temp = 0;
+	unsigned char handshake = 0x77;
+	sleep(2);
+	while(temp != handshake){	
+        write(arduino, &handshake, 1);
+		int n = read(arduino,&temp,1);
+		usleep(10*1000);
+		printf("Looking for handshake\n");
+		if(n)printf("Handshake received: %0x\n", temp);}
+    clear_port(arduino);
+	std::thread ir_thread (ir_func, main_thread);
+	sleep(10);
 	main_thread_dead = 1;
+	ir_thread.join();
 	return 0;
 }	
