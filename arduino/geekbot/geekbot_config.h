@@ -18,25 +18,13 @@ void start_servos()
   pinMode(SERVO_LEFT_PIN, OUTPUT);
   pinMode(SERVO_RIGHT_PIN, OUTPUT);
   
-  pinMode(SERVO_CAM_HORIZONTAL_PIN, OUTPUT);
-  pinMode(SERVO_CAM_VERTICAL_PIN, OUTPUT);
-  pinMode(SERVO_CAM_ROLL_PIN, OUTPUT);
-
   leftServo.attach(SERVO_LEFT_PIN);
   rightServo.attach(SERVO_RIGHT_PIN);
   irServo.attach(SERVO_IR_PIN);
 
-  horServo.attach(SERVO_CAM_HORIZONTAL_PIN);
-  vertServo.attach(SERVO_CAM_VERTICAL_PIN);
-  rollServo.attach(SERVO_CAM_ROLL_PIN);
-
   leftServo.write(90);
   rightServo.write(90);
   irServo.write(90);
-
-  horServo.write(90);
-  vertServo.write(90);
-  rollServo.write(90);
 
   return;
 }
