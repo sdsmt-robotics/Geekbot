@@ -4,9 +4,8 @@
 #include "geekbot_definitions.h"
 #include "geekbot_scanner.h"
 
-#define DEBUG 0
-
 bool light = 0; // Stores light state, defaults to off
+bool debug = 0; // debug switch
 int dist;
 
 void beep(int count)
@@ -25,13 +24,15 @@ void setup()
 {
   geekbot_init(); // Get things set up and ready to run
   unsigned char shake = 0;
+  //beep(1);
   while(shake != 0x77)
     if(Serial.available() > 0)
       shake = Serial.read();
-  Serial.write(0x77);
+  //beep(1);
   while(Serial.available() > 0)
     Serial.read();
   beep(2);
+  Serial.write(0x77);
 }
 
 void loop()
@@ -52,7 +53,7 @@ void loop()
           straight(abs(data), forward);
         else
           halt();
-        if(DEBUG) beep(1);
+        if(debug) beep(1);
         break;
 
       case FLAG_DRIVE_TURN:
@@ -62,7 +63,7 @@ void loop()
           turn(abs(data), left);
         else
           halt();
-        if(DEBUG) beep(2);
+        if(debug) beep(2);
         break;
 
       case FLAG_DRIVE_LEFT:
@@ -72,7 +73,7 @@ void loop()
           leftWheelSpeed(abs(data), COUNTERWISE);
         else
           halt();
-        if(DEBUG) beep(3);
+        if(debug) beep(3);
         break;
 
       case FLAG_DRIVE_RIGHT:
@@ -82,18 +83,18 @@ void loop()
           rightWheelSpeed(abs(data), CLOCKWISE);
         else
           halt();
-        if(DEBUG) beep(4);
+        if(debug) beep(4);
         break;
 
       case FLAG_IR_PAN:
         ir_pan_to(data);
-        if(DEBUG) beep(5);
+        if(debug) beep(5);
         break;
 
       case FLAG_IR_GET:
         dist = ir_get_mm();
         send_value(dist);
-        if(DEBUG) beep(6);
+        if(debug) beep(6);
         //Serial.write(lowByte(dist));
         //Serial.write(highByte(dist));
         //Serial.println(dist);
@@ -110,7 +111,7 @@ void loop()
           digitalWrite(LED_LEFT_PIN, LOW);
           digitalWrite(LED_RIGHT_PIN, LOW);
         }
-        if(DEBUG) beep(7);
+        if(debug) beep(7);
         break;
 
       case FLAG_OUT_BUZZER:
@@ -118,7 +119,7 @@ void loop()
           digitalWrite(BUZZER_PIN, HIGH);
         else
           digitalWrite(BUZZER_PIN, LOW);
-        if(DEBUG) beep(8);
+        if(debug) beep(8);
         break;
 
       default:

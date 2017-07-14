@@ -1,0 +1,50 @@
+import serial
+import time
+
+handshake  = 0x13
+
+drive_flag = 0x30
+left_flag  = 0x31
+right_flag = 0x32
+
+ir_read_flag = 0x33
+ir_pos_flag  = 0x34
+
+end_flag   = 0x36
+
+
+def init(port, baud):
+	global	geekbot = serial.Serial(port, baud, timeout=.01)
+	geekbot.write(chr(handshake))
+
+def drive_forward(speed):
+	geekbot.write(chr(drive_flag))
+	geekbot.write(chr(speed))
+	geekbot.write(chr(end_flag))
+
+def drive_backward(speed):
+	geekbot.write(chr(drive_flag))
+	geekbot.write(chr(-speed))
+	geekbot.write(chr(end_flag))
+
+def drive_right_wheel(speed):
+	geekbot.write(chr(right_flag))
+	geekbot.write(chr(speed))
+	geekbot.write(chr(end))
+	
+def drive_left_wheel(speed):
+	geekbot.write(chr(left_flag))
+	geekbot.write(chr(speed))
+	geekbot.write(chr(end))
+
+def get_ir_distance():
+	geekbot.write(chr(ir_read_flag))
+	dist = geekbot.read(1)
+	return dist
+
+def set_ir_position(angle):
+	geekbot.write(chr(ir_pos_flag))
+	geekbot.write(chr(angle))
+	geekbot.write(chr(end))
+
+

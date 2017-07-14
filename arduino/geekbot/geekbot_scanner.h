@@ -14,12 +14,12 @@
 int sweep_distances[SWEEP_STEPS] = {0};
 int distances_temp[SWEEP_STEPS] = {0};
 
-int ir_get_mm(void)
+unsigned int ir_get_mm(void)
 {
   int val = analogRead(IR_PIN);
   int dist = MIN_DISTANCE;
-  if( val > 3)
-    dist = (67870/(val-3)) - 4; //distance in mm
+  if( val > MIN_DISTANCE)
+    dist = (6787/(val-3)) - 4; //distance in mm  pow((val / 1893.9), -1.087);
   return dist; 
 }
 

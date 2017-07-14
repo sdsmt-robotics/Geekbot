@@ -5,6 +5,7 @@
 #define RIGHT_MASK        0xFF
 #define LEFT_MASK         0xFF00
 #define HANDSHAKE         0x77
+#define FLAG_FINISHED     0x33
 
 #define FLAG_DRIVE_STRAIGHT 0x45    // These are the flag values, must match on the linux side
 #define FLAG_DRIVE_TURN     0x37
