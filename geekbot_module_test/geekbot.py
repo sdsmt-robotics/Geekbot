@@ -55,18 +55,28 @@ class Robot:
 	def halt(self):
 		self.send_cmd(drive_flag, 0)
 
-	def drive_forward(self, speed):
-		self.send_cmd(drive_flag, speed)
+#	def drive_forward(self, speed):
+#		self.send_cmd(drive_flag, speed)
 
-	def drive_forward(self, speed, seconds=None):
-		self.send_cmd(drive_flag, speed)
+	def drive_forward(self, speed, adjust=None, seconds=None):
+		if adjust == None:
+			self.send_cmd(drive_flag, speed)
+		else 
+			self.send_cmd(left_flag, speed)
+			adjusted = speed+adjust
+			if   adjusted > 32767
+				self.send_cmd(right_flag, 32767)
+			elif adjusted < -32767
+				self.send_cmd(right_flag, -32767)
+			else
+				self.send_cmd(right_flag, speed+adjust)
 		if seconds == None:
 			return
 		time.sleep(seconds)
 		self.halt()
 
-	def drive_backward(self, speed):
-		self.send_cmd(drive_flag, -speed)
+#	def drive_backward(self, speed):
+#		self.send_cmd(drive_flag, -speed)
 
 	def drive_backward(self, speed, seconds=None):
 		self.send_cmd(drive_flag, -speed)
