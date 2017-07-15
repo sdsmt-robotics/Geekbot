@@ -1,5 +1,5 @@
 import serial
-import time, math
+from time import sleep as wait
 from struct import pack, unpack
 from collections import namedtuple
 
@@ -25,11 +25,15 @@ class Robot:
 		self.port.timeout = 1
 		self.port.dtr = 0
 		self.port.open()
-		time.sleep(3)
+		wait(3)
 		self.port.write(chr(handshake))
-		time.sleep(1)
+		wait(1)
 		while self.port.read() != chr(0x77):
 			print("Waiting for handshake")
+
+	def shutdown(self):
+		self.halt()
+		self.port.close()
 
 	def map_short(self, num): #where num is a num 0 - 100
     		temp = (num * 32767)/100
@@ -55,8 +59,13 @@ class Robot:
 	def halt(self):
 		self.send_cmd(drive_flag, 0)
 
-#	def drive_forward(self, speed):
-#		self.send_cmd(drive_flag, speed)
+	def turn(self, speed, seconds=None):
+		self.send_cmd(left_flag, -speed)
+		self.send_cmd(right_flag, speed)
+		if seconds != None:
+			wait(seconds)
+			self.halt()
+		return
 
 	def drive_forward(self, speed, adjust=None, seconds=None):
 		if adjust == None:
@@ -72,24 +81,32 @@ class Robot:
 				self.send_cmd(right_flag, speed+adjust)
 		if seconds == None:
 			return
-		time.sleep(seconds)
+		wait(seconds)
 		self.halt()
 
-#	def drive_backward(self, speed):
-#		self.send_cmd(drive_flag, -speed)
 
-	def drive_backward(self, speed, seconds=None):
-		self.send_cmd(drive_flag, -speed)
-		if seconds == none:
+	def drive_backward(self, speed, adjust=None, seconds=None):
+		if adjust == None:
+			self.send_cmd(drive_flag, -speed)
+		else: 
+			self.send_cmd(left_flag, -speed)
+			adjusted = speed+adjust
+			if   adjusted > 100:
+				self.send_cmd(right_flag, -100)
+			elif adjusted < 0:
+				self.send_cmd(right_flag, -0)
+			else:
+				self.send_cmd(right_flag, -speed+adjust)
+		if seconds == None:
 			return
-		time.sleep(seconds)
+		wait(seconds)
 		self.halt()
 
 	def drive_right_wheel(self, speed):
-		self.send_cmd(right_flag, speed)
+		self.send_cmd(right_flag, -speed)
 		
 	def drive_left_wheel(self, speed):
-		self.send_cmd(left_flag, speed)
+		self.send_cmd(left_flag, -speed)
 
 	def get_ir_distance(self):
 		self.send_cmd(ir_read_flag, 1)

@@ -48,9 +48,9 @@ void loop()
     {
       case FLAG_DRIVE_STRAIGHT: // This switch is pre self-explanatory
         if (data > 0)
-          straight(data, backward);
+          straight(data, forward);
         else if (data < 0)
-          straight(abs(data), forward);
+          straight(abs(data), backward);
         else
           halt();
         if(debug) beep(1);
