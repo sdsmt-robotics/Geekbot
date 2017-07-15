@@ -23,7 +23,7 @@ time.sleep(1)
 geek.drive_left_wheel(0)
 geek.drive_right_wheel(-90)
 time.sleep(1)
-geek.drive_right_wheel(-90)
+geek.drive_right_wheel(90)
 time.sleep(1)
 geek.drive_right_wheel(0)
 

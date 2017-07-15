@@ -40,7 +40,6 @@ class Robot:
    		return int(temp)
 
 	def pack_short(self,num):
-		print num
     		return pack("h", int(num))	
 
 	def send_cmd(self,flag, data):
