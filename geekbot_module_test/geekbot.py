@@ -1,5 +1,5 @@
 import serial
-import time
+import time, math
 from struct import pack, unpack
 from collections import namedtuple
 
@@ -31,15 +31,16 @@ class Robot:
 		while self.port.read() != chr(0x77):
 			print("Waiting for handshake")
 
-	def map_short(self, num):
-    		temp = num * 32767
+	def map_short(self, num): #where num is a num 0 - 100
+    		temp = (num * 32767)/100
     		if temp > 32767:
     		    return 32767
     		elif temp < -32767:
     		    return -32767
-   		return int(num * 32767)
+   		return int(temp)
 
 	def pack_short(self,num):
+		print num
     		return pack("h", int(num))	
 
 	def send_cmd(self,flag, data):
@@ -61,14 +62,14 @@ class Robot:
 	def drive_forward(self, speed, adjust=None, seconds=None):
 		if adjust == None:
 			self.send_cmd(drive_flag, speed)
-		else 
+		else: 
 			self.send_cmd(left_flag, speed)
 			adjusted = speed+adjust
-			if   adjusted > 32767
-				self.send_cmd(right_flag, 32767)
-			elif adjusted < -32767
-				self.send_cmd(right_flag, -32767)
-			else
+			if   adjusted > 100:
+				self.send_cmd(right_flag, 100)
+			elif adjusted < 0:
+				self.send_cmd(right_flag, 0)
+			else:
 				self.send_cmd(right_flag, speed+adjust)
 		if seconds == None:
 			return
